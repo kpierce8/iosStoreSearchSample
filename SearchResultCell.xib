@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" id="hjy-vy-1tG" customClass="SearchResultCell" customModule="StoreSearch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hjy-vy-1tG" id="gIs-y7-T5j">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9L-ox-Fri">
+                        <rect key="frame" x="109" y="15" width="203" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="5uT-yZ-Kzu"/>
+                            <constraint firstAttribute="width" constant="203" id="91F-uj-9jn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7hI-C1-yTL">
+                        <rect key="frame" x="15" y="10" width="60" height="60"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="VMx-oS-Kpm"/>
+                            <constraint firstAttribute="height" constant="60" id="oXb-H7-z7n"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ud-0v-9nC">
+                        <rect key="frame" x="90" y="37" width="222" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="8S8-X7-hFr"/>
+                            <constraint firstAttribute="width" constant="222" id="MP5-Sy-x5e"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="e9L-ox-Fri" firstAttribute="leading" secondItem="7hI-C1-yTL" secondAttribute="trailing" constant="34" id="5BX-f9-FQ0"/>
+                    <constraint firstItem="7hI-C1-yTL" firstAttribute="top" secondItem="gIs-y7-T5j" secondAttribute="topMargin" constant="2" id="G2B-kb-kOK"/>
+                    <constraint firstItem="1ud-0v-9nC" firstAttribute="leading" secondItem="7hI-C1-yTL" secondAttribute="trailing" constant="15" id="idg-pQ-YUM"/>
+                    <constraint firstItem="7hI-C1-yTL" firstAttribute="leading" secondItem="gIs-y7-T5j" secondAttribute="leadingMargin" constant="7" id="rIP-j6-zmh"/>
+                    <constraint firstItem="1ud-0v-9nC" firstAttribute="top" secondItem="e9L-ox-Fri" secondAttribute="bottom" constant="1" id="uBx-31-MGF"/>
+                    <constraint firstItem="e9L-ox-Fri" firstAttribute="top" secondItem="gIs-y7-T5j" secondAttribute="topMargin" constant="7" id="xiY-jN-ot5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="artistNameLabel" destination="1ud-0v-9nC" id="W2N-3a-tk3"/>
+                <outlet property="artworkImageView" destination="7hI-C1-yTL" id="pkn-KB-Qu5"/>
+                <outlet property="nameLabel" destination="e9L-ox-Fri" id="Tb4-Ow-KIK"/>
+            </connections>
+            <point key="canvasLocation" x="270" y="349"/>
+        </tableViewCell>
+    </objects>
+</document>

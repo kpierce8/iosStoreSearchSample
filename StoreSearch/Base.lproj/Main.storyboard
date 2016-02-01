@@ -20,6 +20,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HUx-2s-0Bn">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="QHR-qW-vHy">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QHR-qW-vHy" id="vDJ-jh-mwB">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="3GH-ro-SLv"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="sIZ-OX-INK"/>
@@ -46,6 +56,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Rlr-Mt-9nh" id="45s-t2-U4q"/>
+                        <outlet property="searchBar2" destination="Rlr-Mt-9nh" id="qVs-ae-9bP"/>
                         <outlet property="tableView" destination="HUx-2s-0Bn" id="ROk-Nk-NO6"/>
                     </connections>
                 </viewController>
