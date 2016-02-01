@@ -10,6 +10,7 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+        var searchResults = [String]()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -30,11 +31,31 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        print("the search text is '\(searchBar.text!)'")
+       searchResults = [String]()
+        
+        for i in 0...2 {
+            searchResults.append(String(format: "Fake result %d for '%@'", i, searchBar.text!))
+        }
+        tableView.reloadData()
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "SearchResult"
+        var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
+        if cell == nil {
+            cell = UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+        }
+        cell.textLabel?.text = searchResults[indexPath.row]
+        
+        return cell
+    }
     
 }
 
