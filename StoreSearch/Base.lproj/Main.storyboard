@@ -56,7 +56,6 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="Rlr-Mt-9nh" id="45s-t2-U4q"/>
-                        <outlet property="searchBar2" destination="Rlr-Mt-9nh" id="qVs-ae-9bP"/>
                         <outlet property="tableView" destination="HUx-2s-0Bn" id="ROk-Nk-NO6"/>
                     </connections>
                 </viewController>

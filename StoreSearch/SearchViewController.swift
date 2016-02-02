@@ -33,11 +33,66 @@ class SearchViewController: UIViewController {
         searchBar.becomeFirstResponder()    
     }
 
+    
+    func urlWithSearchText(searchText: String) -> NSURL {
+        
+        let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchText)
+        let url = NSURL(string: urlString)
+        return url!
+    }
+    
+    func performStoreRequestWithURL(url: NSURL) -> String? {
+        do {
+            return try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
+        } catch {
+            print("Download error: \(error)")
+            return nil
+        }
+    }
+    
+    func parseJSON(jsonString: String) -> [String: AnyObject]? {
+        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
+            else { return nil }
+        do {
+            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
+        } catch {
+            print("JSON Error  '\(error)'")
+            return nil
+        }
+    }
+    
+    func parseDictionary(dictionary: [String: AnyObject]){
+        guard let array = dictionary["results"] as? [AnyObject] else {
+            print("expected results array")
+            return
+        }
+        
+        for resultDict in array {
+            
+            if let resultDict = resultDict as? [String: AnyObject] {
+                if let wrapperType = resultDict["wrapperType"] as? String,
+                    let kind = resultDict["kind"] as? String {
+                        print("wrapperType: \(wrapperType), kind \(kind)")
+                }
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func showNetworkError() {
+        let alert = UIAlertController(title: "whoops..", message: "error from the itunes store", preferredStyle: .Alert)
+        
+        let action = UIAlertAction(title: "OK", style: .Default, handler: nil )
+        alert.addAction(action)
+        
+        presentViewController(alert, animated: true, completion: nil)
+    }
 
 } // End class
 
@@ -45,19 +100,39 @@ class SearchViewController: UIViewController {
 //SearchBar Extension
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        hasSearched = true
+        if !searchBar.text!.isEmpty {
+            
         searchBar.resignFirstResponder()
+        hasSearched = true
+       
         searchResults = [SearchResult]()
         
-        if searchBar.text != "justin bieber" {
-        for i in 0...2 {
-            let searchResult = SearchResult()
-            searchResult.name = String(format: "Fake result %d for ", i)
-            searchResult.artistName = String(format: " '%@'", searchBar.text!)
-            searchResults.append(searchResult)
-         }
+            let url = urlWithSearchText(searchBar.text!)
+            print("URL: '\(url)")
+            if let jsonString = performStoreRequestWithURL(url){
+                print("Received JSON string '\(jsonString)'")
+            
+                if let dictionary = parseJSON(jsonString){
+                    print("Dictionary \(dictionary)")
+                    parseDictionary(dictionary)
+                    tableView.reloadData()
+                    return
+                }
+            }
+//        if searchBar.text != "justin bieber" {
+//        for i in 0...2 {
+//            let searchResult = SearchResult()
+//            searchResult.name = String(format: "Fake result %d for ", i)
+//            searchResult.artistName = String(format: " '%@'", searchBar.text!)
+//            searchResults.append(searchResult)
+//         }
+//        }
+     
+            
+           // tableView.reloadData()
+            showNetworkError()
         }
-        tableView.reloadData()
+  
     }
     
     
