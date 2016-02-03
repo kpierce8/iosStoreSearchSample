@@ -63,21 +63,37 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func parseDictionary(dictionary: [String: AnyObject]){
+    func parseDictionary(dictionary: [String: AnyObject]) -> [SearchResult] {
         guard let array = dictionary["results"] as? [AnyObject] else {
             print("expected results array")
-            return
+            return []
         }
         
+        var searchResults = [SearchResult]()
         for resultDict in array {
             
-            if let resultDict = resultDict as? [String: AnyObject] {
-                if let wrapperType = resultDict["wrapperType"] as? String,
-                    let kind = resultDict["kind"] as? String {
-                        print("wrapperType: \(wrapperType), kind \(kind)")
+            var searchResult: SearchResult?
+            if let wrapperType = resultDict["wrapperType"] as? String {
+            switch wrapperType {
+                case "track":
+                    searchResult = parseTrack(resultDict)
+                default:
+                    break
                 }
             }
+            if let result = searchResult {
+                searchResults.append(result)
+            }
         }
+        return searchResults
+    }
+    
+    
+    func parseTrack(dictionary: [String: AnyObject]) -> SearchResult {
+        let searchResult = SearchResult()
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -119,18 +135,7 @@ extension SearchViewController: UISearchBarDelegate {
                     return
                 }
             }
-//        if searchBar.text != "justin bieber" {
-//        for i in 0...2 {
-//            let searchResult = SearchResult()
-//            searchResult.name = String(format: "Fake result %d for ", i)
-//            searchResult.artistName = String(format: " '%@'", searchBar.text!)
-//            searchResults.append(searchResult)
-//         }
-//        }
-     
-            
-           // tableView.reloadData()
-            showNetworkError()
+//                   showNetworkError()
         }
   
     }
