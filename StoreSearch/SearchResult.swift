@@ -19,4 +19,8 @@ class SearchResult {
     var price = 0.0
     var genre = ""
     
-}
+    }
+
+func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
+    return lhs.name.localizedStandardCompare(rhs.name) == .OrderedAscending
+    }
