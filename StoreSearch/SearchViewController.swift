@@ -225,34 +225,40 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         if !searchBar.text!.isEmpty {
-            
         searchBar.resignFirstResponder()
             
         isLoading = true
         tableView.reloadData()
         hasSearched = true
-       
         searchResults = [SearchResult]()
         
-            let url = urlWithSearchText(searchBar.text!)
-            print("URL: '\(url)")
-            if let jsonString = performStoreRequestWithURL(url){
-                print("Received JSON string '\(jsonString)'")
             
-                if let dictionary = parseJSON(jsonString){
-                    print("Dictionary \(dictionary)")
-                    searchResults = parseDictionary(dictionary)
-                    searchResults.sortInPlace { $0 < $1 }
-                    isLoading = false
-                    tableView.reloadData()
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+            
+            dispatch_async(queue) {
+                
+            let url = self.urlWithSearchText(searchBar.text!)
+           
+            if let jsonString = self.performStoreRequestWithURL(url),
+                let dictionary = self.parseJSON(jsonString){
+                    
+                    self.searchResults = self.parseDictionary(dictionary)
+                    self.searchResults.sortInPlace { $0 < $1 }
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                    }
                     return
                 }
+            dispatch_async(dispatch_get_main_queue()) {
+                self.showNetworkError()
+                }
+
             }
-//                   showNetworkError()
-        }
   
+        }
     }
-    
     
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return .TopAttached
