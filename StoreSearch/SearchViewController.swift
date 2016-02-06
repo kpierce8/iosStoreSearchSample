@@ -18,7 +18,11 @@ class SearchViewController: UIViewController {
     
        @IBOutlet weak var searchBar: UISearchBar!
        @IBOutlet weak var tableView: UITableView!
+       @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    @IBAction func segmentChanged(sender: UISegmentedControl) {
+        performSearch()
+    }
     
     struct TableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
@@ -28,7 +32,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+       tableView.contentInset = UIEdgeInsetsMake(108, 0, 0, 0)
         var cellNib = UINib(nibName: TableViewCellIdentifiers.searchResultCell, bundle: nil)
         tableView.registerNib(cellNib, forCellReuseIdentifier: TableViewCellIdentifiers.searchResultCell)
         cellNib = UINib(nibName: TableViewCellIdentifiers.nothingFoundCell, bundle: nil)
@@ -41,11 +45,20 @@ class SearchViewController: UIViewController {
     }
 
     
-    func urlWithSearchText(searchText: String) -> NSURL {
+    func urlWithSearchText(searchText: String, category: Int) -> NSURL {
+        let entityName: String
+        switch category {
+            case 1: entityName = "musicTrack"
+            case 2: entityName = "software"
+            case 3: entityName = "ebook"
+            default: entityName = ""
+
+        }
+        
         
         let escapedSearchText = searchText.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", escapedSearchText)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200&entity=%@", escapedSearchText, entityName)
         let url = NSURL(string: urlString)
         return url!
     }
@@ -94,24 +107,7 @@ class SearchViewController: UIViewController {
     }
     
     
-    func kindForDisplay(kind: String) -> String {
         
-        switch kind {
-            case "album": return "Album"
-            case "audiobook": return "Audio Book"
-            case "book": return "Book"
-            case "ebook": return "E-Book"
-            case "feature-movie": return "Movie"
-            case "music-video": return "Music Video"
-            case "podcast": return "Podcast"
-            case "software": return "App"
-            case "song": return "Song"
-            case "tv-episode": return "TV Episode"
-        default: return kind
-            
-        }
-    }
-    
     func parseTrack(dictionary: [String: AnyObject]) -> SearchResult {
         let searchResult = SearchResult()
         
@@ -217,7 +213,14 @@ class SearchViewController: UIViewController {
 
 //SearchBar Extension
 extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+
+        func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+            performSearch()
+    }
+    
+    
+    
+    func performSearch() {
         if !searchBar.text!.isEmpty {
         searchBar.resignFirstResponder()
             
@@ -227,7 +230,7 @@ extension SearchViewController: UISearchBarDelegate {
         hasSearched = true
         searchResults = [SearchResult]()
         
-        let url = self.urlWithSearchText(searchBar.text!)
+            let url = self.urlWithSearchText(searchBar.text!, category: segmentedControl.selectedSegmentIndex)
            
          let session = NSURLSession.sharedSession()
             
@@ -302,14 +305,7 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
         
         let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
         let searchResult = searchResults[indexPath.row]
-        cell.nameLabel.text = searchResult.name
-        
-        if searchResult.artistName.isEmpty {
-            cell.artistNameLabel.text = "Unknown"
-        } else {
-            cell.artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName, kindForDisplay(searchResult.kind))
-        }
-        
+        cell.configureForSearchResult(searchResult)
         return cell
         
             }
