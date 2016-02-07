@@ -208,6 +208,24 @@ class SearchViewController: UIViewController {
         presentViewController(alert, animated: true, completion: nil)
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+       
+        if segue.identifier == "ShowDetail" {
+            let detailController = segue.destinationViewController as! DetailViewController
+         
+             let indexPath = sender as! NSIndexPath
+            let searchResult = searchResults[indexPath.row] as SearchResult
+            detailController.searchResult = searchResult
+            //   detailController.artistNameLabel.text = searchResult.artistName
+         //   detailController.nameLabel.text = searchResult.name
+         //   detailController.kindLabel.text = searchResult.kind
+            
+         //   detailController.genreLabel.text = searchResult.genre
+         //   detailController.priceButton.titleLabel?.text = String(format: "%@",searchResult.price)
+        }
+    }
+
+    
 } // End class
 
 
@@ -326,7 +344,8 @@ extension SearchViewController: UITableViewDelegate {
             return indexPath
         }
     }
-}
+    
+    }
 
 // End extensions
 

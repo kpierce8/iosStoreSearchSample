@@ -101,11 +101,15 @@
                                             <action selector="close" destination="w6U-aY-gJt" eventType="touchUpInside" id="BMr-XS-xur"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFC-cD-pK0">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xFC-cD-pK0">
                                         <rect key="frame" x="70" y="9" width="100" height="101"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="101" id="2lQ-2n-fbj"/>
+                                            <constraint firstAttribute="width" constant="100" id="ogw-iA-jQR"/>
+                                        </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="i77-rI-8wK">
-                                        <rect key="frame" x="10" y="115" width="57" height="24"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="i77-rI-8wK">
+                                        <rect key="frame" x="10" y="115" width="222" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -122,25 +126,32 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozh-II-GGE">
-                                        <rect key="frame" x="15" y="142" width="220" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Kind value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="17m-F0-izE">
                                         <rect key="frame" x="68" y="164" width="79" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pZ-hI-eM5">
-                                        <rect key="frame" x="168" y="212" width="68" height="24"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                        <state key="normal" title="$ 9.99"/>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HOn-cz-vOM">
                                         <rect key="frame" x="68" y="188" width="91" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5pZ-hI-eM5">
+                                        <rect key="frame" x="169" y="211" width="67" height="26"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                        <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                        <state key="normal" title="$ 9.99" backgroundImage="PriceButton"/>
+                                        <connections>
+                                            <action selector="openInStore" destination="w6U-aY-gJt" eventType="touchUpInside" id="kUb-mx-3Zj"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozh-II-GGE">
+                                        <rect key="frame" x="10" y="142" width="220" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="G6t-gH-Z1q"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -149,7 +160,18 @@
                                 <color key="backgroundColor" white="1" alpha="0.94564494680851063" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="1Ev-je-Pzc"/>
+                                    <constraint firstAttribute="trailing" secondItem="ozh-II-GGE" secondAttribute="trailing" constant="10" id="9mc-lx-dyr"/>
+                                    <constraint firstItem="ozh-II-GGE" firstAttribute="leading" secondItem="0hu-Qa-eQJ" secondAttribute="leading" constant="10" id="ASu-0k-qrA"/>
+                                    <constraint firstItem="ozh-II-GGE" firstAttribute="top" secondItem="i77-rI-8wK" secondAttribute="bottom" constant="3" id="DUx-Pj-fIh"/>
+                                    <constraint firstItem="ozh-II-GGE" firstAttribute="top" secondItem="i77-rI-8wK" secondAttribute="bottom" constant="3" id="DdS-yT-08v"/>
+                                    <constraint firstItem="xFC-cD-pK0" firstAttribute="top" secondItem="0hu-Qa-eQJ" secondAttribute="top" constant="9" id="G8v-CT-8Lp"/>
+                                    <constraint firstAttribute="trailing" secondItem="i77-rI-8wK" secondAttribute="trailing" constant="8" id="GJq-Cr-2fF"/>
+                                    <constraint firstItem="i77-rI-8wK" firstAttribute="leading" secondItem="0hu-Qa-eQJ" secondAttribute="leading" constant="10" id="OR2-TY-zff"/>
+                                    <constraint firstAttribute="trailing" secondItem="5pZ-hI-eM5" secondAttribute="trailing" constant="4" id="Rk3-j8-OcO"/>
                                     <constraint firstAttribute="width" constant="240" id="YEN-gb-C1p"/>
+                                    <constraint firstAttribute="bottom" secondItem="5pZ-hI-eM5" secondAttribute="bottom" constant="3" id="ft0-Zy-2DK"/>
+                                    <constraint firstItem="i77-rI-8wK" firstAttribute="top" secondItem="xFC-cD-pK0" secondAttribute="bottom" constant="5" id="iNw-hw-Otz"/>
+                                    <constraint firstItem="xFC-cD-pK0" firstAttribute="centerX" secondItem="0hu-Qa-eQJ" secondAttribute="centerX" id="lYa-oM-dwO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -165,7 +187,7 @@
                         <outlet property="kindLabel" destination="17m-F0-izE" id="eyU-Wq-NOi"/>
                         <outlet property="nameLabel" destination="i77-rI-8wK" id="0Kp-zk-U8t"/>
                         <outlet property="popupView" destination="0hu-Qa-eQJ" id="MG9-fK-s08"/>
-                        <outlet property="priceLabel" destination="5pZ-hI-eM5" id="Sju-dO-wEO"/>
+                        <outlet property="priceButton" destination="5pZ-hI-eM5" id="hXi-7v-hi0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pev-V1-hgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -175,5 +197,6 @@
     </scenes>
     <resources>
         <image name="CloseButton" width="15" height="15"/>
+        <image name="PriceButton" width="11" height="24"/>
     </resources>
 </document>
