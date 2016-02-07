@@ -17,6 +17,8 @@
 		97515FB91C5F1B5800042C90 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97515FB81C5F1B5800042C90 /* NothingFoundCell.xib */; };
 		97515FBB1C63236A00042C90 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 97515FBA1C63236A00042C90 /* LoadingCell.xib */; };
 		97515FBD1C6693B800042C90 /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97515FBC1C6693B800042C90 /* UIImageView+DownloadImage.swift */; };
+		9790ACB91C66B18D00EBBE91 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790ACB81C66B18D00EBBE91 /* DetailViewController.swift */; };
+		9790ACBB1C66C6BB00EBBE91 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9790ACBA1C66C6BB00EBBE91 /* DimmingPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,11 +29,13 @@
 		97515FA71C5E913500042C90 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97515FAC1C5E913500042C90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97515FB21C5F08B100042C90 /* SearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
-		97515FB41C5F10CD00042C90 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
-		97515FB61C5F17A500042C90 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		97515FB81C5F1B5800042C90 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
-		97515FBA1C63236A00042C90 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
-		97515FBC1C6693B800042C90 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		97515FB41C5F10CD00042C90 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchResultCell.xib; path = ../SearchResultCell.xib; sourceTree = "<group>"; };
+		97515FB61C5F17A500042C90 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchResultCell.swift; path = ../SearchResultCell.swift; sourceTree = "<group>"; };
+		97515FB81C5F1B5800042C90 /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NothingFoundCell.xib; path = ../NothingFoundCell.xib; sourceTree = "<group>"; };
+		97515FBA1C63236A00042C90 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCell.xib; path = ../LoadingCell.xib; sourceTree = "<group>"; };
+		97515FBC1C6693B800042C90 /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImageView+DownloadImage.swift"; path = "../UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
+		9790ACB81C66B18D00EBBE91 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		9790ACBA1C66C6BB00EBBE91 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,11 +52,6 @@
 		97515F941C5E913500042C90 = {
 			isa = PBXGroup;
 			children = (
-				97515FBC1C6693B800042C90 /* UIImageView+DownloadImage.swift */,
-				97515FBA1C63236A00042C90 /* LoadingCell.xib */,
-				97515FB81C5F1B5800042C90 /* NothingFoundCell.xib */,
-				97515FB61C5F17A500042C90 /* SearchResultCell.swift */,
-				97515FB41C5F10CD00042C90 /* SearchResultCell.xib */,
 				97515F9F1C5E913500042C90 /* StoreSearch */,
 				97515F9E1C5E913500042C90 /* Products */,
 			);
@@ -69,12 +68,19 @@
 		97515F9F1C5E913500042C90 /* StoreSearch */ = {
 			isa = PBXGroup;
 			children = (
+				97515FBC1C6693B800042C90 /* UIImageView+DownloadImage.swift */,
+				97515FBA1C63236A00042C90 /* LoadingCell.xib */,
+				97515FB81C5F1B5800042C90 /* NothingFoundCell.xib */,
+				97515FB61C5F17A500042C90 /* SearchResultCell.swift */,
+				97515FB41C5F10CD00042C90 /* SearchResultCell.xib */,
 				97515FA01C5E913500042C90 /* AppDelegate.swift */,
 				97515FA21C5E913500042C90 /* SearchViewController.swift */,
 				97515FA41C5E913500042C90 /* Main.storyboard */,
 				97515FA71C5E913500042C90 /* Assets.xcassets */,
 				97515FAC1C5E913500042C90 /* Info.plist */,
 				97515FB21C5F08B100042C90 /* SearchResult.swift */,
+				9790ACB81C66B18D00EBBE91 /* DetailViewController.swift */,
+				9790ACBA1C66C6BB00EBBE91 /* DimmingPresentationController.swift */,
 			);
 			path = StoreSearch;
 			sourceTree = "<group>";
@@ -153,8 +159,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				97515FA31C5E913500042C90 /* SearchViewController.swift in Sources */,
+				9790ACBB1C66C6BB00EBBE91 /* DimmingPresentationController.swift in Sources */,
 				97515FB31C5F08B100042C90 /* SearchResult.swift in Sources */,
 				97515FB71C5F17A500042C90 /* SearchResultCell.swift in Sources */,
+				9790ACB91C66B18D00EBBE91 /* DetailViewController.swift in Sources */,
 				97515FA11C5E913500042C90 /* AppDelegate.swift in Sources */,
 				97515FBD1C6693B800042C90 /* UIImageView+DownloadImage.swift in Sources */,
 			);
@@ -298,6 +306,7 @@
 				97515FB11C5E913500042C90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
